@@ -9,8 +9,7 @@ class Solution:
             return flag
 
         for n in range(len(nums)):
-            new = rev(nums[n])
-            nums.append(new)
+            nums.append(rev(nums[n]))
         d = {}
         for number in nums:
             if number in d:
