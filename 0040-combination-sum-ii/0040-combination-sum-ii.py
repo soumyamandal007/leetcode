@@ -9,12 +9,11 @@ class Solution:
                 ans.append(curr[:])
             prev = -1
             for j in range(i,len(candidates)):
-                if candidates[j] == prev:
-                    continue
-                curr.append(candidates[j])
-                backtrack(curr,s+candidates[j],j+1)
-                curr.pop()
-                prev = candidates[j]
+                if candidates[j] != prev:
+                    curr.append(candidates[j])
+                    backtrack(curr,s+candidates[j],j+1)
+                    curr.pop()
+                    prev = candidates[j]
         
         backtrack([],0,0)
         return ans
