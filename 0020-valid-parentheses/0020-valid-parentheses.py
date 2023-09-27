@@ -1,18 +1,21 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        mapdoor = {")":"(","}":"{","]":"["} #hashmap
+        maps = {"(": ")", "[": "]", "{": "}"} #hashmap
         
-        for c in s:
-            if c in mapdoor:
-                if stack and stack[-1] == mapdoor[c]:
-                    stack.pop()
-                else:
-                    return False
+        for char in s:
+            if char in maps:
+                stack.append(char)
             else:
-                stack.append(c)
-            
-        return True if not stack else False
+                if not stack:
+                    return False
+                prev = stack.pop()
+                if maps[prev] != char:
+                    return False
+        if len(stack) == 0:
+            return True
+        else:
+            return False
                 
         
         
